@@ -1,7 +1,8 @@
-package com.decode.basicmovieapp
+package com.decode.basicmovieapp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.decode.basicmovieapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
