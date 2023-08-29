@@ -1,6 +1,6 @@
 package com.decode.basicmovieapp.data.api
 
-import com.decode.basicmovieapp.data.Movie
+import com.decode.basicmovieapp.data.model.Movie
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
