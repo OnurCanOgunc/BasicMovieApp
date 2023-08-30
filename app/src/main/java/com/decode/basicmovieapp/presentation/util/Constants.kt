@@ -1,4 +1,4 @@
-package com.decode.basicmovieapp.util
+package com.decode.basicmovieapp.presentation.util
 
 object Constants {
     const val MOVIE_TABLE = "popular_movies"

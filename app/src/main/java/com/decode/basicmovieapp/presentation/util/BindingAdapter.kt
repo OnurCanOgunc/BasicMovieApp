@@ -1,4 +1,4 @@
-package com.decode.basicmovieapp.util
+package com.decode.basicmovieapp.presentation.util
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

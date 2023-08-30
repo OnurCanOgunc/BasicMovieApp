@@ -12,11 +12,11 @@ class MovieRepositoryImpl(
     private val movieCacheDataSource: MovieCacheDataSource
 ) : MovieRepository {
 
-    override suspend fun getMovies(): List<Result>? {
+    override suspend fun getMovies(): List<Result> {
         return getMoviesFromCache()
     }
 
-    override suspend fun updateMovies(): List<Result>? {
+    override suspend fun updateMovies(): List<Result> {
         val newListOfMovies = getMoviesFromAPI()
         movieLocalDataSource.clearAll()
         movieLocalDataSource.saveMoviesFromDB(newListOfMovies)
@@ -25,50 +25,52 @@ class MovieRepositoryImpl(
     }
 
     private suspend fun getMoviesFromAPI(): List<Result> {
-        lateinit var movieList: List<Result>
+        val movieList = mutableListOf<Result>()
 
         try {
             val response = movieRemoteDataSource.getMovies()
-            val body = response.body()
-            body?.let { movieList = body.results }
+            if (response.isSuccessful) {
+                val body = response.body()
+                body?.let { movieList.addAll(body.results) }
+            }
 
-        } catch (e: Exception) {
+        } catch (_: Exception) {
 
         }
         return movieList
     }
 
     private suspend fun getMoviesFromRoom(): List<Result> {
-        lateinit var movieList: List<Result>
+        val movieList = mutableListOf<Result>()
 
         try {
-            movieList = movieLocalDataSource.getMoviesFromDB()
-        } catch (e: Exception) {
+            movieList.addAll(movieLocalDataSource.getMoviesFromDB())
+        } catch (_: Exception) {
 
         }
 
         if (movieList.isNotEmpty()) {
             return movieList
         } else {
-            movieList = getMoviesFromAPI()
+            movieList.addAll(getMoviesFromAPI())
             movieLocalDataSource.saveMoviesFromDB(movieList)
         }
 
         return movieList
     }
 
-    private suspend fun getMoviesFromCache(): List<Result>? {
-        lateinit var movieList: List<Result>
+    private suspend fun getMoviesFromCache(): List<Result> {
+        val movieList = mutableListOf<Result>()
 
         try {
-            movieList = movieCacheDataSource.getMovies()
-        } catch (e: Exception) {
+            movieList.addAll(movieCacheDataSource.getMovies())
+        } catch (_: Exception) {
 
         }
         if (movieList.isNotEmpty()) {
             return movieList
         } else {
-            movieList = getMoviesFromRoom()
+            movieList.addAll(getMoviesFromRoom())
             movieCacheDataSource.saveMoviesToCache(movieList)
         }
         return movieList

@@ -1,23 +1,21 @@
 package com.decode.basicmovieapp.presentation
 
 import androidx.lifecycle.ViewModel
-import com.decode.basicmovieapp.data.model.Result
+import androidx.lifecycle.liveData
 import com.decode.basicmovieapp.domain.usecases.GetMoviesUseCase
 import com.decode.basicmovieapp.domain.usecases.UpdateMoviesUseCase
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 
 class ViewModel(
     private val getMoviesUseCase: GetMoviesUseCase,
     private val updateMoviesUseCase: UpdateMoviesUseCase
-): ViewModel() {
+) : ViewModel() {
 
-    fun getMovies() = flow {
+    fun getMovies() = liveData {
         val movieList = getMoviesUseCase.execute()
         emit(movieList)
     }
 
-    fun updateMovies() = flow {
+    fun updateMovies() = liveData {
         val movieList = updateMoviesUseCase.execute()
         emit(movieList)
     }

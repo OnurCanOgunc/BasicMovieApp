@@ -11,7 +11,7 @@ class ViewModelFactory(
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return com.decode.basicmovieapp.presentation.ViewModel(
+        return ViewModel(
             getMoviesUseCase,
             updateMoviesUseCase
         ) as T
