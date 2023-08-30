@@ -2,10 +2,10 @@ package com.decode.basicmovieapp.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.decode.basicmovieapp.util.Constants.MEALS_TABLE
+import com.decode.basicmovieapp.util.Constants.MOVIE_TABLE
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = MEALS_TABLE)
+@Entity(tableName = MOVIE_TABLE)
 data class Result(
     @PrimaryKey
     @SerializedName("id")

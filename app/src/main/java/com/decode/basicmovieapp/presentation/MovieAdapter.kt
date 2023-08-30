@@ -11,7 +11,7 @@ import com.decode.basicmovieapp.R
 import com.decode.basicmovieapp.data.model.Result
 import com.decode.basicmovieapp.databinding.ListItemBinding
 
-class MovieAdapter(): RecyclerView.Adapter<MovieAdapter.MyViewHolder>() {
+class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -32,7 +32,6 @@ class MovieAdapter(): RecyclerView.Adapter<MovieAdapter.MyViewHolder>() {
 
     class MyViewHolder(private val binding: ListItemBinding):
         RecyclerView.ViewHolder(binding.root){
-
         fun bind(movie:Result){
             binding.movie = movie
         }
