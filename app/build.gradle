@@ -17,7 +17,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String","API_KEY","\" eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZTY2MGYzNjk0MWJjMzAyZmIyM2M4MjcwYmRlY2NiMCIsInN1YiI6IjY0NmExOTU2YTUwNDZlMDE0NzRkNjZiYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.bm5c6lO4ryETgAeKPWux6ZxTCyYgzCJTU2E9LaSQQzE \""
+        buildConfigField "String","API_KEY","\" - \""
         buildConfigField "String","BASE_URL","\" https://api.themoviedb.org/3/ \""
     }
 
